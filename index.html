@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Strategy Command — Race Director</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,200;0,400;0,700;0,900;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen">
+    <div class="intro-bg"></div>
+    <div class="intro-content">
+      <div class="f1-logo-text">F1</div>
+      <h1 class="intro-title">STRATEGY<br><span>COMMAND</span></h1>
+      <p class="intro-sub">Toma el control. Decide la carrera.</p>
+      <div class="team-select">
+        <p class="team-label">SELECCIONA TU EQUIPO</p>
+        <div class="teams-grid">
+          <button class="team-btn" data-team="Red Bull Racing" data-color="#1E3A8A" data-accent="#FFD700">RED BULL</button>
+          <button class="team-btn" data-team="Scuderia Ferrari" data-color="#DC2626" data-accent="#FFFFFF">FERRARI</button>
+          <button class="team-btn" data-team="Mercedes-AMG" data-color="#059669" data-accent="#C0C0C0">MERCEDES</button>
+          <button class="team-btn" data-team="McLaren Racing" data-color="#EA580C" data-accent="#000000">McLAREN</button>
+          <button class="team-btn" data-team="Aston Martin" data-color="#065F46" data-accent="#00D2BE">ASTON MARTIN</button>
+          <button class="team-btn" data-team="Williams Racing" data-color="#1D4ED8" data-accent="#FFFFFF">WILLIAMS</button>
+        </div>
+      </div>
+      <div class="driver-select" id="driver-select" style="display:none">
+        <p class="team-label">PILOTO</p>
+        <input type="text" id="driver-name" placeholder="Ingresa el nombre del piloto..." maxlength="30" />
+        <button id="start-btn">INICIAR CARRERA</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-screen" style="display:none">
+    <div class="scanlines"></div>
+
+    <!-- TOP HUD -->
+    <header class="hud-top">
+      <div class="hud-team" id="hud-team-name">RED BULL RACING</div>
+      <div class="hud-center">
+        <div class="lap-display">
+          <span class="lap-label">VUELTA</span>
+          <span id="hud-lap" class="lap-num">1</span>
+          <span class="lap-of">/ 5</span>
+        </div>
+      </div>
+      <div class="hud-pos">
+        <span class="pos-label">POS</span>
+        <span id="hud-pos" class="pos-num">6</span>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <main class="game-main">
+
+      <!-- LEFT: STATUS PANEL -->
+      <aside class="status-panel">
+        <div class="panel-title">ESTADO DEL COCHE</div>
+
+        <div class="status-item">
+          <span class="s-label">NEUMÁTICO</span>
+          <div class="tyre-badge" id="tyre-badge">MEDIUM</div>
+        </div>
+
+        <div class="status-item">
+          <span class="s-label">DESGASTE</span>
+          <div class="wear-bar-container">
+            <div class="wear-bar" id="wear-bar"></div>
+          </div>
+          <span class="wear-val" id="wear-val">100%</span>
+        </div>
+
+        <div class="status-item">
+          <span class="s-label">CLIMA</span>
+          <span class="s-val" id="clima-val">☀️ Soleado</span>
+        </div>
+
+        <div class="status-item">
+          <span class="s-label">COCHE</span>
+          <span class="s-val" id="car-status">✅ Normal</span>
+        </div>
+
+        <div class="status-item">
+          <span class="s-label">ESTRATEGIA</span>
+          <span class="s-val" id="strategy-val">Balanceada</span>
+        </div>
+
+        <div class="gap-section">
+          <div class="gap-item">
+            <span class="gap-label">▲ RIVAL DELANTE</span>
+            <span class="gap-val" id="gap-front">+2.4s</span>
+          </div>
+          <div class="gap-item">
+            <span class="gap-label">▼ RIVAL DETRÁS</span>
+            <span class="gap-val" id="gap-back">+1.8s</span>
+          </div>
+        </div>
+
+        <div class="circuit-box">
+          <span class="s-label">CIRCUITO</span>
+          <span class="circuit-name" id="circuit-name">—</span>
+        </div>
+      </aside>
+
+      <!-- CENTER: NARRATIVE -->
+      <section class="narrative-area">
+        <div class="narrative-header">
+          <div class="radio-dot"></div>
+          <span>RADIO DE CARRERA — EN VIVO</span>
+        </div>
+        <div id="narrative-text" class="narrative-text">
+          <div class="loading-msg">
+            <div class="spinner"></div>
+            <span>Conectando con el muro de boxes...</span>
+          </div>
+        </div>
+        <div id="decisions-area" class="decisions-area" style="display:none">
+          <div class="decisions-label">⚡ DECISIÓN ESTRATÉGICA</div>
+          <div id="decisions-buttons" class="decisions-buttons"></div>
+        </div>
+        <div id="loading-indicator" class="loading-indicator" style="display:none">
+          <div class="spinner"></div>
+          <span>El ingeniero está analizando...</span>
+        </div>
+      </section>
+
+      <!-- RIGHT: MINI MAP / RACE ORDER -->
+      <aside class="race-panel">
+        <div class="panel-title">ORDEN DE CARRERA</div>
+        <div id="race-order" class="race-order"></div>
+
+        <div class="panel-title" style="margin-top:1.5rem">HISTORIAL</div>
+        <div id="history-log" class="history-log"></div>
+      </aside>
+
+    </main>
+
+    <!-- FINISH SCREEN -->
+    <div id="finish-screen" style="display:none">
+      <div class="finish-inner">
+        <div class="finish-flag">🏁</div>
+        <h2 class="finish-title">CARRERA FINALIZADA</h2>
+        <div class="finish-pos" id="finish-pos"></div>
+        <div class="finish-msg" id="finish-msg"></div>
+        <button id="restart-btn">NUEVA CARRERA</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
