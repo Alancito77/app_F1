@@ -1,3 +1,4 @@
+
 // ===== F1 STRATEGY COMMAND — GAME ENGINE =====
 
 const SYSTEM_PROMPT = `Eres el motor de un videojuego de estrategia de Fórmula 1. Tu rol es simular una carrera completa donde el usuario es el jefe de estrategia. Cada carrera consta de 5 vueltas, con pista elegida al azar.
