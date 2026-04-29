@@ -1,0 +1,34 @@
+<div class="dashboard">
+  <h1 class="page-title">F1 Strategy Manager</h1>
+
+  <div class="dashboard-grid">
+    <div class="card season-card">
+      <h2>Season {{ gameState.season.current_race }}/{{ gameState.season.total_races }}</h2>
+      <div class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="seasonProgress"></div>
+        </div>
+        <span class="progress-text">Race {{ gameState.season.current_race }} of {{ gameState.season.total_races }}</span>
+      </div>
+      <a routerLink="/race" class="btn-primary">Go to Race</a>
+    </div>
+
+    <div class="card">
+      <h2>Current Status</h2>
+      <p>Season Progress: <strong>{{ seasonProgress }}%</strong></p>
+      <p>Current Race: <strong>{{ gameState.race.circuit }}</strong></p>
+      <p>Position: <strong>P{{ gameState.race.position }}</strong></p>
+    </div>
+
+    <div class="card standings-card">
+      <h3>Championship Standings</h3>
+      <div class="standings-list">
+        <div *ngFor="let s of gameState.season.standings" class="standing-row" [class.is-player]="s.is_player">
+          <span class="pos">{{ s.pos }}</span>
+          <span class="name">{{ s.name }}</span>
+          <span class="pts">{{ s.points }} pts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

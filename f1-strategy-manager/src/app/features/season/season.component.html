@@ -1,0 +1,19 @@
+<div class="season-view">
+  <h1 class="page-title">Season Calendar</h1>
+  <div class="calendar">
+    <div class="races-grid">
+      <div *ngFor="let r of [1,2,3,4,5]" class="race-card">
+        <div class="race-round">R{{ r }}</div>
+        <div class="race-info">
+          <span class="race-circuit">Circuit {{ r }}</span>
+        </div>
+        <div class="race-status">
+          <span class="status-badge">PENDING</span>
+        </div>
+      </div>
+    </div>
+    <div class="season-actions">
+      <a routerLink="/race" class="btn-race">Go to Race</a>
+    </div>
+  </div>
+</div>

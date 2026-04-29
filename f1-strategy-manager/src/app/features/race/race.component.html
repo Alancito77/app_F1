@@ -1,0 +1,59 @@
+<div class="race-view">
+  <div class="race-header">
+    <a routerLink="/dashboard" class="back-link">&larr; Dashboard</a>
+    <h1 class="page-title">Race Control</h1>
+    <a routerLink="/season" class="back-link">Calendar &rarr;</a>
+  </div>
+
+  <div class="race-info-bar">
+    <div class="info-item">
+      <span class="label">CIRCUIT</span>
+      <span class="value">{{ gameState.race.circuit }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">LAP</span>
+      <span class="value">{{ gameState.race.lap }}/{{ gameState.race.total_laps }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">POSITION</span>
+      <span class="value position">P{{ gameState.race.position }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">TYRES</span>
+      <span class="value">{{ gameState.race.tyre }} ({{ gameState.race.tyre_wear }}%)</span>
+    </div>
+  </div>
+
+  <div class="narrative-box">
+    <p>{{ gameState.race.narrative }}</p>
+  </div>
+
+  <div class="race-content">
+    <div class="main-panel">
+      <div class="decisions-container" *ngIf="!raceFinished">
+        <h3>Make Your Decision - Lap {{ gameState.race.lap }}</h3>
+        <div class="decisions-grid">
+          <button *ngFor="let d of gameState.race.decisions" class="decision-btn" (click)="onDecision(d.key)">
+            <span class="decision-key">{{ d.key }}</span>
+            <span class="decision-text">{{ d.text }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="race-result" *ngIf="raceFinished">
+        <h2>Race Finished!</h2>
+        <p>Final Position: P{{ gameState.race.position }}</p>
+        <button class="btn-primary" routerLink="/dashboard">Back to Dashboard</button>
+      </div>
+    </div>
+
+    <div class="side-panel">
+      <div class="race-log">
+        <h3>Race Log</h3>
+        <div class="log-list">
+          <div *ngFor="let log of raceLog" class="log-entry">{{ log }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

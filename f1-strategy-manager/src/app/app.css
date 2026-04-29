@@ -1,0 +1,36 @@
+.app-shell {
+  min-height: 100vh;
+  background: #0a0a1a;
+  color: #fff;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #1a1a2e;
+  border-bottom: 2px solid #e10600;
+}
+.nav-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e10600;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-links a {
+  color: #888;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: #fff; background: #222; }
+.nav-links a.active { color: #e10600; }
+.main-content {
+  padding: 20px;
+}

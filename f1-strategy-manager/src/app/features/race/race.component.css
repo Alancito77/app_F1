@@ -1,0 +1,22 @@
+.race-view { max-width: 1400px; margin: 0 auto; padding: 20px; color: #fff; }
+.race-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.page-title { color: #e10600; margin: 0; font-size: 24px; }
+.back-link { color: #888; text-decoration: none; }
+.race-info-bar { display: flex; gap: 16px; flex-wrap: wrap; background: #1a1a2e; border: 1px solid #e10600; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.info-item { display: flex; flex-direction: column; gap: 4px; min-width: 100px; }
+.info-item .label { font-size: 10px; letter-spacing: 1.5px; color: #888; font-weight: 600; }
+.info-item .value { font-size: 16px; font-weight: 700; color: #fff; }
+.info-item .position { color: #e10600; font-size: 20px; }
+.narrative-box { background: #1a1a2e; border-left: 3px solid #e10600; padding: 12px 16px; border-radius: 4px; margin-bottom: 12px; }
+.narrative-box p { margin: 0; color: #ccc; }
+.race-content { display: grid; grid-template-columns: 1fr 400px; gap: 20px; }
+.decisions-grid { display: flex; flex-direction: column; gap: 8px; }
+.decision-btn { display: flex; align-items: center; gap: 12px; background: #16213e; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 6px; cursor: pointer; text-align: left; width: 100%; }
+.decision-btn:hover { border-color: #e10600; }
+.decision-key { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #e10600; color: #fff; font-weight: 700; }
+.race-log { background: #1a1a2e; border: 1px solid #333; border-radius: 8px; padding: 16px; }
+.race-log h3 { color: #e10600; margin: 0 0 12px 0; }
+.log-list { display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow-y: auto; }
+.log-entry { background: #16213e; padding: 8px 12px; border-radius: 4px; font-size: 13px; color: #ccc; border-left: 3px solid #e10600; }
+.race-result { background: #1a1a2e; border: 1px solid #e10600; border-radius: 8px; padding: 20px; text-align: center; }
+.btn-primary { display: inline-block; padding: 10px 24px; background: #e10600; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; }
